@@ -16,8 +16,8 @@ namespace Elastic_Search_CRUD.Controller
         }
 
         [HttpGet]
-        public async Task<IActionResult> getAllBikes([FromQuery, BindRequired] int PageIndex, [FromQuery, BindRequired]int PageSize) {
-            var result = await _bike.getAllBike(PageIndex, PageSize);
+        public async Task<IActionResult> getAllBikes([FromQuery, BindRequired] int PageIndex, [FromQuery, BindRequired]int PageSize, string brand_name, string sortOrder, string sortField) {
+            var result = await _bike.getAllBike(PageIndex, PageSize, brand_name, sortOrder, sortField);
             return Ok(result);
         }
 

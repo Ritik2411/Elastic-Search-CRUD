@@ -16,7 +16,7 @@ namespace Elastic_Search_CRUD.Context
 
             var settings = new ConnectionSettings(new Uri(url))
                 .PrettyJson()
-                .DefaultIndex(defaultIndex);
+                .DefaultIndex(defaultIndex).DisableDirectStreaming();
 
 
             var client = new ElasticClient(settings);
@@ -29,7 +29,7 @@ namespace Elastic_Search_CRUD.Context
         private static void CreateIndex(IElasticClient client, string indexName)
         {
             var createIndexResponse = client.Indices.Create(indexName,
-                index => index.Map<Bike>(x => x.AutoMap())
+                index => index.Map<ESBike>(x => x.AutoMap())
             );
         }
     }

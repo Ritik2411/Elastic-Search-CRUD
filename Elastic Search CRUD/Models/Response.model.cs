@@ -2,7 +2,7 @@
 {
     public class Response
     {
-        public string _id { get; set; }
+        public long totalDocuments { get; set; }
 
         public object data { get; set; }
     }

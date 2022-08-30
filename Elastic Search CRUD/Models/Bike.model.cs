@@ -2,7 +2,8 @@
 {
     public class Bike
     {
-        public long brand_id { get; set; }
-        public string brand_name { get; set; }
+        public string _id { get; set; }
+
+        public object bike_data { get; set; }
     }
 }
