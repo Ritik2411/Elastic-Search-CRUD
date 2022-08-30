@@ -33,9 +33,9 @@ namespace Elastic_Search_CRUD.Repository
             return result.IsValid;
         }
 
-        public async Task<object> getAllBike()
+        public async Task<object> getAllBike(int pageIndex, int pageSize)
         {
-            var result = await _elasticClient.SearchAsync<Bike>(s => s.Query(q => q.MatchAll()));
+            var result = await _elasticClient.SearchAsync<Bike>(s => s.From((pageIndex - 1) * pageSize).Size(pageSize).Query(q => q.MatchAll()));
             var data = result.Hits.ToList().Select(x => new Response
             {
                 _id = x.Id,

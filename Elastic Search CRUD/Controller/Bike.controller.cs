@@ -1,6 +1,7 @@
 ﻿using Elastic_Search_CRUD.Models;
 using Elastic_Search_CRUD.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Threading.Tasks;
 
 namespace Elastic_Search_CRUD.Controller
@@ -15,8 +16,8 @@ namespace Elastic_Search_CRUD.Controller
         }
 
         [HttpGet]
-        public async Task<IActionResult> getAllBikes() {
-            var result = await _bike.getAllBike();
+        public async Task<IActionResult> getAllBikes([FromQuery, BindRequired] int PageIndex, [FromQuery, BindRequired]int PageSize) {
+            var result = await _bike.getAllBike(PageIndex, PageSize);
             return Ok(result);
         }
 

@@ -6,7 +6,7 @@ namespace Elastic_Search_CRUD.Repository
 {
     public interface IBike
     {
-        Task<object> getAllBike();
+        Task<object> getAllBike(int pageIndex, int pageSize);
 
         Task<object> getBikeById(int id);
         
